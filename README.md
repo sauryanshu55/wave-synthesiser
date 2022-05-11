@@ -1,5 +1,5 @@
 # wave-synthesiser
-A C terminal program that creates a wave file as .wav file taking in userinput arguments as waveforms: sine, square, triangle and output filename. &amp; saw. <br>
+A C terminal program that creates a wave file as .wav file taking in userinput arguments as waveforms: sine, square, triangle,saw frequency, pulse, duration and output filename. <br>
 Included is a makefile in the terminal that can be called with the command
 ```
 $> make
