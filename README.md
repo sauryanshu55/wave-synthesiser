@@ -8,6 +8,15 @@ Makefile has the command
 ```
 $> gcc synth.c -o synth -lm -fsanitize=address
 ```
+This creates a file called ./synth, which can then be used in the form:
+```
+$> ./synth -w <FORM: either sine, square, triangle or saw> -f <frequency> -d <duration> -p <pulse> <Output filename.wav>
+ ```
+For example:
+```
+$> ./synth -w sine -f 330 -d 5 -p 1 sample-sine-wav.wav 
+```
+_Make sure to include the .wav extension in the outputfile name!_
 The <b>-fsanitize=address</b> flag aborts the program if pre-conditions, i.e valid arguments in proper flags, are not provided. Minor memory leaks may occur in that case.<br>
 Else, memory is not leaked, and output file is proportional to data inside the .wav file.
 
