@@ -63,7 +63,6 @@ uint32_t *make_sine_data(int dur, int freq) {
         float sine_val = sin(curPhase);                         // sine is a function of the phase currently on, curPhase
         uint32_t data_to_assign = convert_to_sample(sine_val);  // converting to sample,adds 1 and multiplies the amp by INT32_MAX -1
         *ret_sine_data = data_to_assign;
-        // printf("Sample data [%d]= %u\n",i,*ret_sine_data);
         ret_sine_data++;
         curPhase = curPhase + changePhase;  // changing the curphase to thr next curphase by adding the appropriate change in phase
     }
@@ -78,12 +77,9 @@ uint32_t convert_to_square_sample(float val) {
     uint32_t ret_converted;
     if (val >= 0) {
         ret_converted = INT32_MAX - 1;
-        // printf("Before casting: %u\n",ret_converted );
     } else {
         ret_converted = 0;
-        // printf("Before casting: %u\n",ret_converted );
     }
-    // printf("After casting: %u\n",ret_converted );
     return ret_converted;
 }
 uint32_t *make_square_data(int dur, int freq) {
@@ -99,7 +95,6 @@ uint32_t *make_square_data(int dur, int freq) {
         float sine_val = sin(curPhase);
         uint32_t data_to_assign = convert_to_square_sample(sine_val);
         *ret_square_data = data_to_assign;
-        // printf("Sample data [%d]= %u\n",i,*ret_square_data);
         ret_square_data++;
         curPhase = curPhase + changePhase;  // changing the curphase to thr next curphase by adding the appropriate change in phase
     }
@@ -125,12 +120,9 @@ uint32_t *make_triangle_data(int dur, int freq) {
     int numSamples = num_samples_from_duration(dur);
     float const PI = 3.14159265359;
 
-    float num_samples_per_frequency = numSamples / freq;  // number of samples of frequency, so thhat we can find out the quarters of the frequency where the gradients flip
-    // printf("Num samples per freq: %f\n",num_samples_per_frequency);
+    float num_samples_per_frequency = numSamples / freq;  // number of samples of frequency, so thhat we can find out the quarters of the frequency where the gradients 
     float period = num_samples_per_frequency / 4;  // This is the period in which the gradients must change/flip
-    // printf("period: %f\n",period);
     uint32_t additionConst = (INT32_MAX - 1) / (period);  // This constant will be added in each iteration
-    // printf("addition constant: %u\n",additionConst);
 
     int nthSample = 0;  // nth sample will be used to count where in the phase we are so that once it exceeds the period, we can flip/change
     uint32_t data_to_assign = 0;
@@ -180,7 +172,6 @@ uint32_t *make_saw_data(int dur, int freq) {
     for (int i = 1; i <= numSamples; i++) {
         data_to_assign = data_to_assign + additionConst;
         *ret_triangle_data = data_to_assign;
-        // printf("sample[%d]: %u\n",i,*ret_triangle_data);
         ret_triangle_data++;
         nthSample++;
 
@@ -209,7 +200,6 @@ uint32_t *make_simple_sawtooth_data(int dur) {
     }
 
     for (int i = 0; i < numSamples; i++) {
-        // printf("%u\n",*ret_sawtooth_data);
         ret_sawtooth_data--;  // returning ret to the original point!
     }
     return ret_sawtooth_data;
