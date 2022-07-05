@@ -9,7 +9,6 @@
 
 //COMMENTS INCLUDED IN HEADER FILE!
 
-
 header init_header(uint32_t file_size) {
     header retHeader;
     retHeader.MARKER = "RIFF";
@@ -281,7 +280,6 @@ void write_header(uint32_t file_size, FILE *wavFile) {
     fwrite(&header_attr.SCND_SUBCHUNK_SZ, sizeof(header_attr.SCND_SUBCHUNK_SZ), 1, wavFile);
 }
 
-// printf("calc value is : %lf\n",phaseChange);
 bool is_valid_form_arg(char *formArg) {
     if ((strcasecmp("sine", formArg) == 0) || (strcasecmp("triangle", formArg) == 0) || (strcasecmp("saw", formArg) == 0) || (strcasecmp("square", formArg) == 0)) {
         return true;
