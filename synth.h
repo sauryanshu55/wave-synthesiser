@@ -83,6 +83,5 @@ void flip_derivatives(bool increasing_derivative, bool decreasing_derivative);
 // using a simple linearly decaying envelope.
 void apply_pulse_envelope(uint32_t *raw_data, int len, int n);
 
-//Adds post processing UI comments
+//Adds post processing CLI comments
 void post_processing(char* formArg, int freqArg, int durArg, int pulseArg, char* output_filename);
-// ./ssynth -f 300 -w sine -d 3 -p 5
