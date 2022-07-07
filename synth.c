@@ -7,7 +7,7 @@
 #include <stdlib.h>
 #include <string.h>
 
-//COMMENTS INCLUDED IN HEADER FILE!
+//Method comments in header file
 
 header init_header(uint32_t file_size) {
     header retHeader;
